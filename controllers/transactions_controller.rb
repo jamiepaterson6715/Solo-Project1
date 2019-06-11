@@ -1,6 +1,6 @@
 require ("sinatra")
 require ("sinatra/contrib/all")
-require_relative ( "../transactions/tag.rb")
+require_relative ( "../models/tag.rb")
 also_reload ( "../models/*" )
 
 # lists
@@ -9,8 +9,11 @@ get '/transactions' do
   erb ( :"transactions/index" )
 end
 
-# creates new tag
+
+# creates new tag/ updated for new.erb
 get '/transactions/new' do
+  @merchant =Merchant.all
+  @tags = Tag.all
   @transactions = Transaction.all
   erb(:"transactions/new")
 end

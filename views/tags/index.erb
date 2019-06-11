@@ -1,9 +1,13 @@
 <h2>Tags</h2>
 
-  <% @tags.each do |tag| %>
-  <p><%= tag.name %></p>
-  <form action="/tags/<%= tag.id %>/delete" method="POST"><input type="submit" value="Delete"></form>>
-  <a href="/tags/<%= tag.id %>/edit">Edit</a>
-  <% end %>
 
   <a href="/tags/new">Add New Tag</a>
+
+
+  <% @tags.each do |tag| %>
+  <p><%= tag.name %></p>
+
+  <form action="/tags/<%= tag.id %>/delete" method="POST"><input type="submit" value="Delete">
+  </form><form action="/tags/<%= tag.id %>/edit" method="GET"><input type="submit" value="Edit"></form>
+
+  <% end %>

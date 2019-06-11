@@ -1,9 +1,11 @@
 <h2>merchants</h2>
 
+<a href="/merchants/new">Add New Merchant</a>
+
   <% @merchants.each do |merchant| %>
   <p><%= merchant.name %></p>
   <form action="/merchants/<%= merchant.id %>/delete" method="POST"><input type="submit" value="Delete"></form>>
   <a href="/merchants/<%= merchant.id %>/edit">Edit</a>
   <% end %>
 
-  <a href="/merchants/new">Add New Merchant</a>
+  
