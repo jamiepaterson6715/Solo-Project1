@@ -1,6 +1,6 @@
 require ("sinatra")
 require ("sinatra/contrib/all")
-require_relative ( "../models/merchants.rb")
+require_relative ( "../models/merchant.rb")
 also_reload ( "../models/*" )
 
 # get tags do

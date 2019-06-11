@@ -2,9 +2,10 @@ require_relative( '../db/sql_runner')
 
 class Transaction
 
-  attr_reader :name, :amount, :merchant_id, :tag_id, :id
+  attr_reader :id
+  attr_accessor :name, :amount, :merchant_id, :tag_id
 
-  def initialize
+  def initialize(options)
     @id = options['id'].to_i
     @name = options['name']
     @amount = options['amount'].to_i
@@ -52,13 +53,17 @@ def save()
     SqlRunner.run(sql, values)
   end
 
+  def self.delete_all
+    sql = "DELETE FROM transactions"
+    SqlRunner.run(sql)
+end
+
   def self.all()
       sql = "SELECT * FROM transactions"
       transactions_data = SqlRunner.run(sql)
       transactions = map_items(transactions_data)
       return transactions
     end
-
 
     def self.find(id)
       sql = "SELECT * FROM transactions

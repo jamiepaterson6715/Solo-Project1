@@ -1,5 +1,8 @@
 <h2>Tags</h2>
 
-  <% @Tags.each do |tag| %>
-    "hello"
+  <% @tags.each do |tag| %>
+  <p><%= tag.name %></p>
+  <form action="/tags/<%= tag.id %>/delete" method="POST"><input type="submit" value="Delete"></form>
   <% end %>
+
+  <a href="/tags/new">Add New Tag</a>

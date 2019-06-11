@@ -13,7 +13,7 @@ class Tag
     sql = "INSERT INTO tags( name ) VALUES ( $1 ) RETURNING id"
     values = [@name]
     result = SqlRunner.run(sql, values)
-    @id = results.first()['id'].to_i
+    @id = result.first()['id'].to_i
   end
 
 
@@ -38,6 +38,11 @@ class Tag
     WHERE id = $1"
     values = [@id]
     SqlRunner.run(sql, values)
+  end
+
+  def self.delete_all
+    sql = "DELETE FROM tags"
+    SqlRunner.run(sql)
   end
 
   def self.map_items(tag_data)
