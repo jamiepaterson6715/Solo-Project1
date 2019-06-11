@@ -16,6 +16,14 @@ class Tag
     @id = result.first()['id'].to_i
   end
 
+  def update()
+    sql = "UPDATE tags
+    SET name = $1
+    WHERE id = $2"
+    values = [@name, @id]
+    SqlRunner.run( sql, values )
+  end
+
 
   def self.find(id)
     sql = "SELECT * FROM tags
@@ -48,5 +56,6 @@ class Tag
   def self.map_items(tag_data)
     return tag_data.map { |tag| Tag.new(tag) }
   end
+
 
 end

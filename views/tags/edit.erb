@@ -1,0 +1,9 @@
+<p>Edit Existing Tag</p>
+
+<a href="/tags">return to index</a>
+<form action="/tags/<%= @tag.id %>" method="post">
+<label for="tag-name">Edit <%=@tag.name%></label>
+<input type="text" name="name" id="tag-name"/>
+<input type="submit" value="Update Tag">
+<!-- create form then submit -->
+</form>

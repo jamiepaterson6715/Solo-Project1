@@ -31,6 +31,14 @@ class Merchant
     return merchants
   end
 
+  def update()
+    sql = "UPDATE merchants
+    SET name = $1
+    WHERE id = $2"
+    values = [@name, @id]
+    SqlRunner.run( sql, values )
+  end
+
   def self.all()
     sql = "SELECT * FROM merchants"
     merchant_data = SqlRunner.run(sql)
@@ -44,7 +52,7 @@ class Merchant
   end
 
   def self.map_items(merchant_data)
-    return merchant_data.map { |merchant| Merchant.new(tag) }
+    return merchant_data.map { |merchant| Merchant.new(merchant) }
   end
 
 end

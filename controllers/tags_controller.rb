@@ -28,15 +28,19 @@ post '/tags/:id/delete' do
   redirect to '/tags'
 end
 
-# # edits a specific tag
-# post '/tags/:id/edit' do
-#   @tags = Tag.all
-#   erb(:edit)
-# end
-#
-# # edits existing  tag in database - relates to above
-# post '/tags/:id' do
-#   tags = Tag.new(params)
-#   Tag.update
-#   redirect to "/tags/#{params['id']}"
-# end
+# edits a specific tag
+get '/tags/:id/edit' do
+  @tag = Tag.find(params['id'])
+  erb(:"tags/edit")
+
+  # @tags = Tag.all
+  # erb(:"tags/edit")
+end
+
+# edits existing  tag in database - relates to above
+post '/tags/:id' do
+  tag = Tag.new(params)
+  tag.update
+  redirect to "/tags/#{params['id']}"
+  # after creation of show page this will work - hopefully
+end

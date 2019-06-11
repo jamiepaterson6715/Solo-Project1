@@ -1,0 +1,9 @@
+<p>Edit Existing Merchant</p>
+
+<a href="/merchants">return to index</a>
+<form action="/merchants/<%= @merchant.id %>" method="post">
+<label for="merchant-name">Edit <%=@merchant.name%></label>
+<input type="text" name="name" id="merchant-name"/>
+<input type="submit" value="Update Merchants">
+<!-- create form then submit -->
+</form>
