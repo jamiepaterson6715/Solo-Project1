@@ -9,6 +9,11 @@ get '/tags' do
   erb ( :"tags/index" )
 end
 
+get '/tags/:id' do
+  @tags = Tag.all()
+  erb (:"tags/index")
+end
+
 # creates new tag
 get '/tags/new' do
   @tags = Tag.all

@@ -57,6 +57,30 @@ def save()
     sql = "DELETE FROM transactions"
     SqlRunner.run(sql)
 end
+    def merchant
+      sql="SELECT * FROM transactions INNER JOIN merchants
+      ON transactions.merchant_id = merchants.id WHERE merchants.id = $1"
+      values = [@merchant_id]
+      results = SqlRunner.run(sql, values)
+      return map_items(results).first
+    end
+
+    def tag
+      sql="SELECT * FROM transactions INNER JOIN tags
+      ON transactions.tag_id = tags.id WHERE tags.id = $1"
+      values = [@tag_id]
+      results = SqlRunner.run(sql, values)
+      return map_items(results).first
+    end
+
+
+      # joins transactions table with the merchants table end
+
+
+    def self.map_items(transaction_data)
+      transactions = transaction_data.map{|map| Transaction.new(map)}
+      return transactions
+    end
 
   def self.all()
       sql = "SELECT * FROM transactions"
@@ -64,6 +88,8 @@ end
       transactions = map_items(transactions_data)
       return transactions
     end
+
+
 
     def self.find(id)
       sql = "SELECT * FROM transactions

@@ -10,6 +10,11 @@ get '/merchants' do
   erb ( :"merchants/index" )
 end
 
+get '/merchants/:id' do
+  @merchants = Merchant.all()
+  erb (:"merchants/index")
+end
+
 # creates new tag
 get '/merchants/new' do
   @merchants = Merchant.all

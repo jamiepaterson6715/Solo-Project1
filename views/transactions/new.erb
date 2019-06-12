@@ -13,11 +13,14 @@
     <%= merchant.name %>
   </option>
   <% end %>
+</select>
+
+
 
 <select name = "tag_id" >
     <% for tag in @tags %>
     <option value ="<%= tag.id %>">
-      <%= tags.name %>
+      <%= tag.name %>
     </option>
     <% end %>
 
