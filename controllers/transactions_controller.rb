@@ -9,8 +9,17 @@ get '/transactions' do
   @transactions = Transaction.all()
   erb ( :"transactions/index" )
 end
+# creates new tag/ updated for new.erb
 
-get 'transactions/:id' do
+get '/transactions/new' do
+  @merchant =Merchant.all
+  @tags = Tag.all
+  @transactions = Transaction.all
+  erb(:"transactions/new")
+end
+
+
+get '/transactions/:id' do
   @transactions = Transaction.all()
   erb ( :"transactions/index" )
 end
@@ -39,14 +48,17 @@ end
 # edits a specific tag
 get '/transactions/:id/edit' do
   @transactions = Transaction.find(params['id'])
+  @merchant = Merchant.all
+  @tags = Tag.all
   erb(:"transactions/edit")
+
 
   # @tags = Tag.all
   # erb(:"tags/edit")
 end
 
 # edits existing  tag in database - relates to above
-post '/tags/:id' do
+post '/transactions/:id' do
   transaction = Transaction.new(params)
   transaction.update
   redirect to "/transactions/#{params['id']}"
