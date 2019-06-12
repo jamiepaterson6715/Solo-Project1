@@ -6,5 +6,6 @@ require_relative('controllers/tags_controller')
 require_relative('controllers/transactions_controller')
 
 get '/' do
-  erb( :index )
+    @transactions = Transaction.all()
+erb( :index )
 end

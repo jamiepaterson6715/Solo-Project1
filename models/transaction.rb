@@ -62,7 +62,7 @@ end
       ON transactions.merchant_id = merchants.id WHERE merchants.id = $1"
       values = [@merchant_id]
       results = SqlRunner.run(sql, values)
-      return map_items(results).first
+      return results.map{|map| Transaction.new(map)}.first
     end
 
     def tag
@@ -70,11 +70,17 @@ end
       ON transactions.tag_id = tags.id WHERE tags.id = $1"
       values = [@tag_id]
       results = SqlRunner.run(sql, values)
-      return map_items(results).first
+      return results.map{|map| Transaction.new(map)}.first
+      # return map_items(results).first
     end
+        # joins transactions table with the merchants table end
 
-
-      # joins transactions table with the merchants table end
+      def self.total
+        sql ="SELECT SUM (amount) FROM transactions"
+        result = SqlRunner.run(sql)
+        result result.map{|total| total['sum']}.first
+      end
+      # adds total amount in transactions
 
 
     def self.map_items(transaction_data)

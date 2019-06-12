@@ -1,1 +1,22 @@
 <h1>My_spend_test</h1>
+
+<table>
+  <tr>
+
+<th> name </th>
+<th> amount </th>
+<th> tag </th>
+<th> Merchant </th>
+
+</tr>
+
+<% @transactions.each do |transaction| %>
+<tr>
+<td><%= transaction.name %></td>
+<td>£<%= transaction.amount %></td>
+<td><%= transaction.tag.name %></td>
+<td><%= transaction.merchant.name %></td>
+<% end %>
+
+</tr>
+</table>
