@@ -7,5 +7,6 @@ require_relative('controllers/transactions_controller')
 
 get '/' do
     @transactions = Transaction.all()
+    @total = Transaction.total
 erb( :index )
 end

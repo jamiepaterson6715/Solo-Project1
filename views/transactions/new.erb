@@ -4,8 +4,9 @@
 <form action="/transactions" method="post">
 <label for="transaction-name">Add New Transaction </label>
 <input type="text" name="name" id="transaction-name"/>
+
 <label for="transaction-amount">Add New Transaction Amount</label>
-<input type="number" name="name" id="transaction-amount"/>
+<input type="number" name="amount" id="transaction-amount"/>
 
 <select name = "merchant_id" >
   <% for merchant in @merchant %>

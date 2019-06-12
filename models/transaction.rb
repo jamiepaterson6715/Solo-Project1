@@ -78,7 +78,7 @@ end
       def self.total
         sql ="SELECT SUM (amount) FROM transactions"
         result = SqlRunner.run(sql)
-        result result.map{|total| total['sum']}.first
+        return result.map{|total| total['sum']}.first
       end
       # adds total amount in transactions
 
